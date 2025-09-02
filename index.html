@@ -306,15 +306,160 @@
             }
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .portfolio-item {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .game-region {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .game-link {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .game-link:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+
+        .accomplishments {
+            list-style: none;
+            padding: 0;
+        }
+
+        .accomplishments li {
+            background: #f8f9fa;
+            margin-bottom: 0.8rem;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            position: relative;
+        }
+
+        .accomplishments li::before {
+            content: '🏆';
+            position: absolute;
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .accomplishments li {
+            padding-left: 2.5rem;
+        }
+
+        .revenue-highlight {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            font-weight: bold;
+            padding: 0.2rem 0.5rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+
+        .install-highlight {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            font-weight: bold;
+            padding: 0.2rem 0.5rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+
+        .ranking-highlight {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            font-weight: bold;
+            padding: 0.2rem 0.5rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+        }
+
+        .portfolio-stat {
+            text-align: center;
+            color: white;
+        }
+
+        .portfolio-stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -324,6 +469,7 @@
             <div class="logo">Wilvin Karimun</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -574,7 +720,7 @@
         });
 
         // Add some interactive hover effects
-        document.querySelectorAll('.experience-item, .skill-category, .contact-item, .stat-item').forEach(item => {
+        document.querySelectorAll('.experience-item, .skill-category, .contact-item, .stat-item, .portfolio-item').forEach(item => {
             item.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-8px) scale(1.02)';
             });
