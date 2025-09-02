@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilvin Karimun - Product Management Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .experience-item {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-period {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.1);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-content {
+                padding: 2rem;
+            }
+            
+            .content-section {
+                padding: 2rem;
+                margin: 1rem 0;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Wilvin Karimun</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>Wilvin Karimun</h1>
+                    <p>Dynamic Product Manager specializing in Gaming Industry Innovation</p>
+                    <p>Leading high-impact projects that boost revenues and streamline operations</p>
+                    <a href="#contact" class="cta-button">Let's Connect</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="content-section fade-in">
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">3+</div>
+                            <div>Years at Noctua Games</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div>Weeks to Launch Knightcore</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">30%</div>
+                            <div>Revenue Increase Achieved</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1.2M</div>
+                            <div>Monthly Views Generated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <div class="content-section fade-in">
+                    <h2 class="section-title">Professional Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="job-title">Lead Project Manager</div>
+                        <div class="company-period">Noctua Games Jakarta | Nov 2024 – Present</div>
+                        <ul class="achievements">
+                            <li>Spearheaded communication with C-level executives and strategic partners to foster collaboration</li>
+                            <li>Oversaw comprehensive project management across multiple titles including Knightcore, Dragon's Isle, Ash Echoes SEA, and Crazy One</li>
+                            <li>Coordinated legal, finance, creative, and publishing teams to ensure alignment with project objectives</li>
+                            <li>Managed the creation of the company SaaS product pipeline to enhance operational capabilities</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-title">Project Manager & Strategic Partnerships</div>
+                        <div class="company-period">Noctua Games Jakarta | Sep 2023 – Oct 2024</div>
+                        <ul class="achievements">
+                            <li>Facilitated external communications and spearheaded partnership development initiatives</li>
+                            <li>Ensured key live operations were effectively maintained across multiple game titles</li>
+                            <li>Successfully orchestrated the launch of Knightcore publishing, developing it from concept to execution in just 5 weeks</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-title">Senior Game Operations Specialist</div>
+                        <div class="company-period">Noctua Games Jakarta | Apr 2023 – Aug 2023</div>
+                        <ul class="achievements">
+                            <li>Promoted to lead Knightcore operations based on exceptional results from Yggdrasil 2</li>
+                            <li>Maintained critical operational data for Yggdrasil 2, driving informed decision-making</li>
+                            <li>Engineered in-game events for Yggdrasil 2, achieving a 30% revenue increase over several months</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-title">Marketing Manager</div>
+                        <div class="company-period">Battuta Tech / Lita Beijing | Jun 2021 – Jul 2022</div>
+                        <ul class="achievements">
+                            <li>Directed KOL campaigns and managed influencer partnerships, increasing monthly total views to approximately 1.2 million</li>
+                            <li>Authored advertising scripts and optimised UA metrics to enhance campaign performance</li>
+                            <li>Cultivated branding collaborations with Moonton Indonesia, achieving a 20% increase in organic downloads through MPL and WSL exposure</li>
+                            <li>Collaborated with esports communities and industry partners to expand brand presence in Southeast Asia</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-title">Overseas Operation</div>
+                        <div class="company-period">XiPu Games Shanghai | Jun 2020 – Jul 2021</div>
+                        <ul class="achievements">
+                            <li>Monitored and scrutinised user data metrics to guide operational decisions</li>
+                            <li>Maintained peak LTV at approximately $1.50 in the Indonesian market</li>
+                            <li>Executed and managed a comprehensive social media content strategy across Discord and Facebook</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="content-section fade-in">
+                    <h2 class="section-title">Skills & Expertise</h2>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Project Management</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Scrum</span>
+                                <span class="skill-tag">Kanban</span>
+                                <span class="skill-tag">Product Management</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3>Analytics & Tools</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Firebase</span>
+                                <span class="skill-tag">Adjust</span>
+                                <span class="skill-tag">Playstore</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3>Soft Skills</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Leadership</span>
+                                <span class="skill-tag">Communication</span>
+                                <span class="skill-tag">Critical Thinking</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3>Languages</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Indonesian (Native)</span>
+                                <span class="skill-tag">English (Fluent)</span>
+                                <span class="skill-tag">Mandarin (Fluent)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="content-section fade-in">
+                    <h2 class="section-title">Get In Touch</h2>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <h3>Email</h3>
+                            <p>wilvinkarimun@gmail.com</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <h3>Phone</h3>
+                            <p>+62-81216642915</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <h3>Location</h3>
+                            <p>Indonesia</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">🎓</div>
+                            <h3>Education</h3>
+                            <p>Bachelor in Management<br>Shanghai University (2015-2021)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Wilvin Karimun. Ready to drive innovative product solutions that meet market demands.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize first section as visible
+        document.querySelector('.hero .fade-in').classList.add('visible');
+
+        // Add active nav state
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.experience-item, .skill-category, .contact-item, .stat-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
